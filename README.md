@@ -20,9 +20,9 @@ require "geode"
 
 TODO: Write usage instructions here
 
-## Development
+## TODO
 
-TODO: Write development instructions here
+- Figure out how to restrict types to `Number` or something instead of forcing `Float64`
 
 ## Contributing
 

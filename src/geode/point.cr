@@ -1,7 +1,6 @@
 module Geode
-  # TODO: Figure out how to make this use `Number` or something instead of generics.
-  class Point(T)
-    include Enumerable(T)
+  class Point
+    include Enumerable(Float64)
 
     getter x
     getter y
@@ -14,7 +13,7 @@ module Geode
       -0.01 <= num && num <= 0.01 # precision limit
     end
 
-    def initialize(@x : T, @y : T)
+    def initialize(@x : Float64, @y : Float64)
     end
 
     def ==(other : Enumerable)
