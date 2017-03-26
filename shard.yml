@@ -1,9 +1,8 @@
-name: geometry
+name: geode
 version: 0.1.0
-
-authors:
-  -  <>
-
 crystal: 0.21.1
+
+author:
+  - Nick Clifford <nick@nickclifford.me>
 
 license: MIT

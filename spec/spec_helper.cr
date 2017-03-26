@@ -1,2 +1,2 @@
 require "spec"
-require "../src/geometry"
+require "../src/geode"

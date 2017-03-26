@@ -1,6 +1,6 @@
-# geometry
+# Geode
 
-TODO: Write a description here
+A library for geometry in Crystal.
 
 ## Installation
 
@@ -8,14 +8,14 @@ Add this to your application's `shard.yml`:
 
 ```yaml
 dependencies:
-  geometry:
-    github: [your-github-name]/geometry
+  geode:
+    github: MiningPotatoes/geode
 ```
 
 ## Usage
 
 ```crystal
-require "geometry"
+require "geode"
 ```
 
 TODO: Write usage instructions here
@@ -26,7 +26,7 @@ TODO: Write development instructions here
 
 ## Contributing
 
-1. Fork it ( https://github.com/[your-github-name]/geometry/fork )
+1. Fork it ( https://github.com/MiningPotatoes/geode/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
@@ -34,4 +34,4 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [[your-github-name]](https://github.com/[your-github-name])  - creator, maintainer
+- [Nick Clifford](https://github.com/MiningPotatoes)  - creator, maintainer

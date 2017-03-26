@@ -1,6 +1,6 @@
 require "./spec_helper"
 
-describe Geometry do
+describe Geode do
   # TODO: Write tests
 
   it "works" do
