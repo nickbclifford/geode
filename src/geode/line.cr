@@ -8,7 +8,7 @@ module Geode
 
     # @intercept_val should never be accessed except in #x_intercept and #y_intercept
     # *technically*, it doesn't matter, but please use those methods instead for readability's sake
-    def initialize(@slope : Float64, @intercept_val : Float64)
+    def initialize(@slope : Number::Primitive, @intercept_val : Number::Primitive)
     end
 
     def_equals_and_hash(slope, y_intercept)
@@ -43,18 +43,18 @@ module Geode
     def x_intercept
       return nil if horizontal?
 
-      Point.new(vertical? ? @intercept_val : -(y_intercept.as(Point).y / slope), 0.0)
+      Point.new(vertical? ? @intercept_val : -(y_intercept.as(Point).y / slope), 0)
     end
 
     def y_intercept
       return nil if vertical?
 
-      Point.new(0.0, @intercept_val)
+      Point.new(0, @intercept_val)
     end
   end
 
   class Segment < Line
-    include Enumerable(Float64)
+    include Enumerable(Number)
 
     def initialize(@p1 : Point, @p2 : Point)
     end
@@ -72,8 +72,8 @@ module Geode
       # if the point isn't on the line, there's no chance of it being in the segment
       return false unless to_line.include?(other)
 
-      minmax_x = map(&:x).minmax
-      minmax_y = map(&:y).minmax
+      minmax_x = map(&.x).minmax
+      minmax_y = map(&.y).minmax
 
       if vertical?
         other.x == x_intercept.x && minmax_y[0] <= other.y && other.y <= minmax_y[1]
@@ -103,13 +103,13 @@ module Geode
     private def x_intercept
       return nil if horizontal?
 
-      Point.new(vertical? ? @p1.x : -(y_intercept.as(Point).y / slope), 0.0)
+      Point.new(vertical? ? @p1.x : -(y_intercept.as(Point).y / slope), 0)
     end
 
     private def y_intercept
       return nil if vertical?
 
-      Point.new(0.0, @p1.y - (slope * @p1.x))
+      Point.new(0, @p1.y - (slope * @p1.x))
     end
   end
 end

@@ -2,9 +2,9 @@ require "./point"
 
 module Geode
   class Angle
-    include Comparable(Float64)
+    include Comparable(Number)
 
-    def initialize(measure : Float64, unit : Symbol = :radians)
+    def initialize(measure : Number::Primitive, unit : Symbol = :radians)
       if unit == :radians
         @measure = measure
       elsif unit == :degrees
@@ -26,7 +26,7 @@ module Geode
       Angle.new(@measure - other.radians)
     end
 
-    def *(other : Number) # For some reason, I can have this typed as `Number`, but I can't have the instance variables typed like that. Oh well.
+    def *(other : Number)
       Angle.new(@measure * other)
     end
 
@@ -81,7 +81,7 @@ module Geode
       Angle.new(@measure % (2 * Math::PI))
     end
 
-    def to_point(distance : Float64 = 1.0, center : Point = Point.new(0.0, 0.0))
+    def to_point(distance : Number = 1, center : Point = Point.new)
       Point.new((distance * cos) + center.x, (distance * sin) + center.y)
     end
 

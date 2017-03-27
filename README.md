@@ -18,11 +18,11 @@ dependencies:
 require "geode"
 ```
 
-TODO: Write usage instructions here
+Once you've done that, simply use any class from the `Geode` module that you want, like `Point`, `Angle`, or `Circle`.
 
 ## TODO
 
-- Figure out how to restrict types to `Number` or something instead of forcing `Float64`
+- &#175;\\\_(&#12484;)_/&#175; 
 
 ## Contributing
 

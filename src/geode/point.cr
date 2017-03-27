@@ -1,6 +1,6 @@
 module Geode
   class Point
-    include Enumerable(Float64)
+    include Enumerable(Number)
 
     getter x
     getter y
@@ -13,7 +13,7 @@ module Geode
       -0.01 <= num && num <= 0.01 # precision limit
     end
 
-    def initialize(@x : Float64, @y : Float64)
+    def initialize(@x : Number::Primitive = 0, @y : Number::Primitive = 0)
     end
 
     def_equals_and_hash(to_a)
