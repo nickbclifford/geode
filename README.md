@@ -22,6 +22,8 @@ Once you've done that, simply use any class from the `Geode` module that you wan
 
 ## TODO
 
+- Specs
+- Proper documentation
 - &#175;\\\_(&#12484;)_/&#175; 
 
 ## Contributing
