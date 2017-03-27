@@ -20,10 +20,13 @@ require "geode"
 
 Once you've done that, simply use any class from the `Geode` module that you want, like `Point`, `Angle`, or `Circle`.
 
+## Documentation
+
+Simply run `crystal doc` to generate the documentation.
+
 ## TODO
 
-- Specs
-- Proper documentation
+- Specs/test
 - &#175;\\\_(&#12484;)_/&#175; 
 
 ## Contributing
