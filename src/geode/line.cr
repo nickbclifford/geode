@@ -23,7 +23,7 @@ module Geode
     end
 
     def perpendicular?(other : Line)
-      other.slope == -(1 / slope)
+      other.slope ==  0 - (1.0 / slope) # really, Crystal? no unary '-' negation operator?
     end
 
     def to_s
@@ -37,13 +37,13 @@ module Geode
     end
 
     def vertical?
-      slope.infinite?
+      slope.to_f.infinite?
     end
 
     def x_intercept
       return nil if horizontal?
 
-      Point.new(vertical? ? @intercept_val : -(y_intercept.as(Point).y / slope), 0)
+      Point.new(vertical? ? @intercept_val : 0 - (y_intercept.as(Point).y / slope), 0)
     end
 
     def y_intercept
@@ -54,6 +54,9 @@ module Geode
   end
 
   class Segment < Line
+    getter p1
+    getter p2
+
     include Enumerable(Number)
 
     def initialize(@p1 : Point, @p2 : Point)
@@ -103,7 +106,7 @@ module Geode
     private def x_intercept
       return nil if horizontal?
 
-      Point.new(vertical? ? @p1.x : -(y_intercept.as(Point).y / slope), 0)
+      Point.new(vertical? ? @p1.x : 0 - (y_intercept.as(Point).y / slope), 0)
     end
 
     private def y_intercept

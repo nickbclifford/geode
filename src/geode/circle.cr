@@ -6,7 +6,7 @@ module Geode
     getter center
 
     def initialize(radius : Number::Primitive = 1, @center : Point = Point.new)
-      raise ArgumentError.new('radius must be > 0') unless radius > 0
+      raise ArgumentError.new("radius must be > 0") unless radius > 0
       @radius = radius
     end
 
@@ -29,7 +29,7 @@ module Geode
     # area methods
 
     def sector_area(angle : Angle)
-      (1 / 2.0) * (@radius ** 2) * angle.radians
+      0.5 * (@radius ** 2) * angle.radians
     end
 
     def area
