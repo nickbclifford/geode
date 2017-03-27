@@ -16,9 +16,7 @@ module Geode
     def initialize(@x : Float64, @y : Float64)
     end
 
-    def ==(other : Enumerable)
-      to_a == other.to_a
-    end
+    def_equals_and_hash(to_a)
 
     def each
       yield @x

@@ -11,9 +11,7 @@ module Geode
     def initialize(@slope : Float64, @intercept_val : Float64)
     end
 
-    def ==(other : Line)
-      slope == other.slope && y_intercept == other.y_intercept
-    end
+    def_equals_and_hash(slope, y_intercept)
 
     def horizontal?
       slope == 0
