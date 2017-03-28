@@ -1,7 +1,7 @@
 module Geode
   # The `Point` class represents a point on the 2-dimensional Cartesian plane.
   class Point
-    include Enumerable(Number)
+    include Enumerable(Number::Primitive)
 
     # Returns the x-coordinate.
     getter x

@@ -68,7 +68,7 @@ module Geode
     # Returns the second endpoint of the segment.
     getter p2
 
-    include Enumerable(Number)
+    include Enumerable(Point)
 
     def initialize(@p1 : Point, @p2 : Point)
     end

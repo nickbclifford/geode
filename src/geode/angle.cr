@@ -4,7 +4,7 @@ module Geode
   # The `Angle` class represents a geometric angle.
   # Basic arithmetic as well as trigonometric functions can be applied to it.
   class Angle
-    include Comparable(Number)
+    include Comparable(self)
 
     # Creates a new `Angle`.
     def initialize(measure : Number::Primitive, unit : Symbol = :radians)
@@ -54,17 +54,17 @@ module Geode
 
     # Returns whether or not the given angle lines on a quadrant boundary, i.e. whether the angle's measure is divisible by 1/2pi / 90 degrees.
     def boundary?
-      @measure % (Math::PI / 2) == 0
+      @measure.to_f % (Math::PI / 2) == 0
     end
 
     # Returns whether or not the given angle represents a semi-circle, i.e. whether the angle's measure is divisible by pi / 180 degrees.
     def half?
-      @measure % Math::PI == 0
+      @measure.to_f % Math::PI == 0
     end
 
     # Returns whether or not the given angle represents a full circle, i.e. whether the angle's measure is divisible by 2pi / 360 degrees.
     def full?
-      @measure % (2 * Math::PI) == 0
+      @measure.to_f % (2 * Math::PI) == 0
     end
 
     # Returns which quadrant the angle lies in. If the angle lies on a quadrant boundary, it returns nil.
@@ -90,13 +90,13 @@ module Geode
           @measure - Math::PI
         when 4
           (2 * Math::PI) - @measure
-        end
+        end.as(Float)
       )
     end
 
     # Returns a new `Angle` with the measure restricted to the interval [0, 2pi) / [0, 360).
     def normalize
-      Angle.new(@measure % (2 * Math::PI))
+      Angle.new(@measure.to_f % (2 * Math::PI))
     end
 
     # Returns the `Point` that lies `distance` units away from the terminal side centered at `center`.
