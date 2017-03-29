@@ -52,7 +52,6 @@ describe Geode do
     # it "can find the point at a certain distance on the terminal side" do
     #   Angle.new(45, :degrees).to_point.should eq Point.new(Math.sqrt(2) / 2, Math.sqrt(2) / 2)
     # end
-    
     it "can use basic trigonometric functions" do
       Angle.new(60, :degrees).sin.should eq Math.sqrt(3) / 2
       Angle.new(180, :degrees).cos.should eq -1
@@ -62,29 +61,5 @@ describe Geode do
       # http://i.imgur.com/b5FQlSO.png
       # Angle.new(45, :degrees).cot.should eq 1.0
     end
-  end
-
-  describe Circle do
-    # TODO
-  end
-
-  describe Line do
-    # TODO
-  end
-
-  describe Segment do
-    # TODO
-  end
-
-  describe Point do
-    # TODO
-  end
-
-  describe Polygon do
-    # TODO
-  end
-
-  describe RegularPolygon do
-    # TODO
   end
 end
