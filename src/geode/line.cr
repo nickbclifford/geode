@@ -9,7 +9,7 @@ module Geode
 
     # Returns whether the two given lines are perpendicular to each other.
     def self.perpendicular?(l1 : Line, l2 : Line)
-      l1.slope == 0 - (1.0 / l2.slope) # really, Crystal? no unary '-' negation operator?
+      l1.slope == -(1.0 / l2.slope)
     end
 
     # Creates a new `Line`.
@@ -23,7 +23,7 @@ module Geode
       slope == 0
     end
 
-    # Returns whether the given point lies on the line.
+    # FIXME: Returns whether the given point lies on the line.
     def include?(other : Point)
       return other.x == x_intercept.as(Point).x if vertical?
       other.y == (slope * other.x) + y_intercept.as(Point).y
@@ -43,14 +43,14 @@ module Geode
 
     # Returns whether the line is vertical.
     def vertical?
-      slope.to_f.infinite?
+      !slope.to_f.finite?
     end
 
     # Returns the x-intercept of the line. If the line is horizontal, it has no x-intercept, so it returns `nil`.
     def x_intercept
       return nil if horizontal?
 
-      Point.new(vertical? ? @intercept_val : 0 - (y_intercept.as(Point).y / slope), 0)
+      Point.new(vertical? ? @intercept_val : 0 - (y_intercept.as(Point).y / slope.to_f), 0)
     end
 
     # Returns the y-intercept of the line. If the line is vertical, it has no y-intercept, so it returns `nil`.
@@ -81,7 +81,7 @@ module Geode
       yield @p2
     end
 
-    # Returns whether the given point lies on the segment.
+    # FIXME: Returns whether the given point lies on the segment.
     def include?(other : Point)
       # if the point isn't on the line, there's no chance of it being in the segment
       return false unless to_line.include?(other)
@@ -90,7 +90,7 @@ module Geode
       minmax_y = map(&.y).minmax
 
       if vertical?
-        other.x == x_intercept.x && minmax_y[0] <= other.y && other.y <= minmax_y[1]
+        other.x == x_intercept.as(Point).x && minmax_y[0] <= other.y && other.y <= minmax_y[1]
       else
         minmax_x[0] <= other.x && other.x <= minmax_x[1] && minmax_y[0] <= other.y && other.y <= minmax_y[1]
       end
@@ -118,13 +118,13 @@ module Geode
 
     # you shouldn't have to use the x- and y-intercept methods when dealing with segments
     # they're private instead of being removed since Line#to_s needs them for proper function
-    private def x_intercept
+    protected def x_intercept
       return nil if horizontal?
 
       Point.new(vertical? ? @p1.x : 0 - (y_intercept.as(Point).y / slope), 0)
     end
 
-    private def y_intercept
+    protected def y_intercept
       return nil if vertical?
 
       Point.new(0, @p1.y - (slope * @p1.x))
