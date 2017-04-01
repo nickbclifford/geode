@@ -22,7 +22,7 @@ module Geode
     # Returns the area of a polygon.
     def area
       0.5 * segments.reduce(0) do |sum, seg|
-        sum + ((seg.p1.x * seg.p2.y) - (seg.p2.x * segment.p1.y))
+        sum + ((seg.p1.x * seg.p2.y) - (seg.p2.x * seg.p1.y))
       end.abs
     end
 
@@ -39,7 +39,7 @@ module Geode
     end
 
     # Returns an array of the line segments that make up the polygon.
-    # The created array is in the form `[Segment.new(p1, p2), Segment.new(p2, p3),..., Segment.new(p(n-1), p(n)), Segment.new(p(n), p1)]`.
+    # The created array is in the form `[Segment.new(p1, p2), Segment.new(p2, p3), ..., Segment.new(p(n-1), p(n)), Segment.new(p(n), p1)]`.
     def segments
       @vertices.zip(@vertices.rotate).map { |s| Segment.new(*s) }
     end
