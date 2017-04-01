@@ -28,7 +28,7 @@ module Geode
 
     # TODO: Polygon#contains?
 
-    # Returns whether the given point lies on the polygon's circumference.
+    # Returns whether the given point lies on the polygon's perimeter.
     def include?(other : Point)
       segments.any?(&.include?(other))
     end
