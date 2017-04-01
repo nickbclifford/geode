@@ -2,7 +2,7 @@ require "./spec_helper"
 
 include Geode
 
-point = Point.new(0.9, 1.7)
+point = Point.new(1, 2)
 line = Line.new(3, -1)
 
 describe Line do
