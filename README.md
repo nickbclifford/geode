@@ -1,4 +1,4 @@
-# Geode
+# Geode [![Build Status](https://travis-ci.org/MiningPotatoes/geode.svg?branch=master)](https://travis-ci.org/MiningPotatoes/geode)
 
 A library for geometry in Crystal.
 
@@ -26,7 +26,6 @@ Simply run `crystal doc` to generate the documentation.
 
 ## TODO
 
-- Specs/test
 - &#175;\\\_(&#12484;)_/&#175; 
 
 ## Contributing
