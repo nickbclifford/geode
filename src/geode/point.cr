@@ -1,6 +1,6 @@
 module Geode
   # The `Point` class represents a point on the 2-dimensional Cartesian plane.
-  class Point
+  struct Point
     include Enumerable(Number::Primitive)
 
     # Returns the x-coordinate.
@@ -30,8 +30,8 @@ module Geode
     end
 
     # Returns a string representation of the point in the form `(x, y)`.
-    def to_s
-      sprintf("(%g, %g)", @x, @y)
+    def to_s(io : IO)
+      io << sprintf("(%g, %g)", @x, @y)
     end
   end
 end

@@ -23,7 +23,7 @@ module Geode
       slope == 0
     end
 
-    # FIXME: Returns whether the given point lies on the line.
+    # Returns whether the given point lies on the line.
     def include?(other : Point)
       return other.x == x_intercept.as(Point).x if vertical?
       other.y == (slope * other.x) + y_intercept.as(Point).y
@@ -31,14 +31,15 @@ module Geode
 
     # Returns a string representation of the line in slope-intercept form (`y = mx + b`).
     # A vertical line will return a string in the form `x = c` where `c` is the line's x-intercept.
-    def to_s
-      if vertical?
-        sprintf("x = %g", x_intercept.as(Point).x)
-      elsif horizontal?
-        sprintf("y = %g", y_intercept.as(Point).y)
-      else
-        sprintf("y = %gx + %g", slope, y_intercept.as(Point).y)
-      end
+    def to_s(io)
+      io <<
+        if vertical?
+          sprintf("x = %g", x_intercept.as(Point).x)
+        elsif horizontal?
+          sprintf("y = %g", y_intercept.as(Point).y)
+        else
+          sprintf("y = %gx + %g", slope, y_intercept.as(Point).y)
+        end
     end
 
     # Returns whether the line is vertical.
@@ -81,7 +82,7 @@ module Geode
       yield @p2
     end
 
-    # FIXME: Returns whether the given point lies on the segment.
+    # Returns whether the given point lies on the segment.
     def include?(other : Point)
       # if the point isn't on the line, there's no chance of it being in the segment
       return false unless to_line.include?(other)

@@ -1,9 +1,9 @@
 require "./point"
 
 module Geode
-  # The `Angle` class represents a geometric angle.
+  # The `Angle` struct represents a geometric angle.
   # Basic arithmetic as well as trigonometric functions can be applied to it.
-  class Angle
+  struct Angle
     include Comparable(self)
 
     # Creates a new `Angle`.
@@ -104,26 +104,25 @@ module Geode
       Point.new((distance * cos) + center.x, (distance * sin) + center.y)
     end
 
-    macro finished
-      {% names = {
-        "sin" => "sine",
-        "cos" => "cosine",
-        "tan" => "tangent",
-        "sec" => "secant",
-        "csc" => "cosecant",
-        "cot" => "cotangent"
-      } %}
-      {% for fn, inv in {"sin" => "csc", "cos" => "sec", "tan" => "cot"} %}
-        # Returns the {{names[fn].id}} function of the angle.
-        def {{fn.id}}
-          Math.{{fn.id}}(@measure)
-        end
+    private NAMES = {
+      "sin" => "sine",
+      "cos" => "cosine",
+      "tan" => "tangent",
+      "sec" => "secant",
+      "csc" => "cosecant",
+      "cot" => "cotangent"
+    }
 
-        # Returns the {{names[inv].id}} function (inverse {{names[fn].id}}) of the angle.
-        def {{inv.id}}
-          1 / {{fn.id}}
-        end
-      {% end %}
-    end
+    {% for fn, inv in {"sin" => "csc", "cos" => "sec", "tan" => "cot"} %}
+      # Returns the {{NAMES[fn].id}} function of the angle.
+      def {{fn.id}}
+        Math.{{fn.id}}(@measure)
+      end
+
+      # Returns the {{NAMES[inv].id}} function (inverse {{NAMES[fn].id}}) of the angle.
+      def {{inv.id}}
+        1 / {{fn.id}}
+      end
+    {% end %}
   end
 end

@@ -10,7 +10,7 @@ module Geode
 
     # Creates a new `Polygon` with variadic arguments.
     def initialize(*vertices : Point)
-      # you can't really type restrict Tuples of variadic length (which is how splat arguments get input)
+      # you can't really type restrict Tuples of variadic length (which is how splat arguments get input for some reason)
       # because of this, we store them internally as an array
       @vertices = vertices.to_a
     end

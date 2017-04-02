@@ -1,8 +1,8 @@
 require "./angle"
 
 module Geode
-  # The `Circle` class represents a circle.
-  class Circle
+  # The `Circle` struct represents a circle.
+  struct Circle
     # Returns the radius of the circle.
     getter radius
     # Returns the center of the circle.
@@ -56,8 +56,8 @@ module Geode
     end
 
     # Returns a string representation of the circle in the form `(x-h)^2 + (y-k)^2 = r`, where (h, k) is the circle's circumference and `r` is the circle's radius squared.
-    def to_s
-      sprintf("(x-%g)^2 + (y-%g)^2 = %g", @center.x, @center.y, @radius ** 2)
+    def to_s(io : IO)
+      io << sprintf("(x-%g)^2 + (y-%g)^2 = %g", @center.x, @center.y, @radius ** 2)
     end
   end
 end
