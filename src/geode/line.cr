@@ -31,14 +31,14 @@ module Geode
 
     # Returns a string representation of the line in slope-intercept form (`y = mx + b`).
     # A vertical line will return a string in the form `x = c` where `c` is the line's x-intercept.
-    def to_s(io)
+    def to_s(io : IO)
       io <<
         if vertical?
-          sprintf("x = %g", x_intercept.as(Point).x)
+          "x = #{x_intercept.as(Point).x}"
         elsif horizontal?
-          sprintf("y = %g", y_intercept.as(Point).y)
+          "y = #{y_intercept.as(Point).y}"
         else
-          sprintf("y = %gx + %g", slope, y_intercept.as(Point).y)
+          "y = #{slope}x + #{y_intercept.as(Point).y}"
         end
     end
 

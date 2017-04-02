@@ -57,7 +57,7 @@ module Geode
 
     # Returns a string representation of the circle in the form `(x-h)^2 + (y-k)^2 = r`, where (h, k) is the circle's circumference and `r` is the circle's radius squared.
     def to_s(io : IO)
-      io << sprintf("(x-%g)^2 + (y-%g)^2 = %g", @center.x, @center.y, @radius ** 2)
+      io << "(x-#{@center.x})^2 + (y-#{@center.y})^2 = #{@radius ** 2}"
     end
   end
 end

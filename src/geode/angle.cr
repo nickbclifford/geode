@@ -104,25 +104,26 @@ module Geode
       Point.new((distance * cos) + center.x, (distance * sin) + center.y)
     end
 
-    private NAMES = {
-      "sin" => "sine",
-      "cos" => "cosine",
-      "tan" => "tangent",
-      "sec" => "secant",
-      "csc" => "cosecant",
-      "cot" => "cotangent"
-    }
+    {% begin %}
+      {% names = {
+        "sin" => "sine",
+        "cos" => "cosine",
+        "tan" => "tangent",
+        "sec" => "secant",
+        "csc" => "cosecant",
+        "cot" => "cotangent"
+      } %}
+      {% for fn, inv in {"sin" => "csc", "cos" => "sec", "tan" => "cot"} %}
+        # Returns the {{names[fn].id}} function of the angle.
+        def {{fn.id}}
+          Math.{{fn.id}}(@measure)
+        end
 
-    {% for fn, inv in {"sin" => "csc", "cos" => "sec", "tan" => "cot"} %}
-      # Returns the {{NAMES[fn].id}} function of the angle.
-      def {{fn.id}}
-        Math.{{fn.id}}(@measure)
-      end
-
-      # Returns the {{NAMES[inv].id}} function (inverse {{NAMES[fn].id}}) of the angle.
-      def {{inv.id}}
-        1 / {{fn.id}}
-      end
+        # Returns the {{names[inv].id}} function (inverse {{names[fn].id}}) of the angle.
+        def {{inv.id}}
+          1 / {{fn.id}}
+        end
+      {% end %}
     {% end %}
   end
 end
